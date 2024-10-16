@@ -57,43 +57,6 @@
         </div>
     </div>
 
-    <script>
-        document.getElementById('sleep-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            
-            const sleepTime = document.getElementById('sleep-time').value;
-            const wakeTime = document.getElementById('wake-time').value;
-            
-            if (!sleepTime || !wakeTime) {
-                alert('Por favor, insira ambos os horários de dormir e acordar!');
-                return;
-            }
-
-            // Convertemos o horário de dormir e de acordar em objetos Date
-            const [sleepHours, sleepMinutes] = sleepTime.split(':').map(Number);
-            const sleepDate = new Date();
-            sleepDate.setHours(sleepHours, sleepMinutes, 0, 0);
-
-            const [wakeHours, wakeMinutes] = wakeTime.split(':').map(Number);
-            const wakeDate = new Date();
-            wakeDate.setHours(wakeHours, wakeMinutes, 0, 0);
-
-            // Se o horário de acordar for antes do de dormir, adiciona 1 dia ao horário de acordar
-            if (wakeDate <= sleepDate) {
-                wakeDate.setDate(wakeDate.getDate() + 1);
-            }
-
-            // Calcula a diferença em milissegundos
-            const diffMs = wakeDate - sleepDate;
-
-            // Converte para horas e minutos
-            const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
-            const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-
-            // Atualiza o resultado no HTML
-            document.getElementById('sleep-result').textContent = 
-                `Tempo total de sono: ${diffHours} horas e ${diffMinutes} minutos.`;
-        });
-    </script>
+    <script src="js/app.js"></script>
 </body>
 </html>
